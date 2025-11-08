@@ -67,7 +67,7 @@
                     method: 'POST',
                     data: {
                         action: 'getso_forms_duplicate_form',
-                        nonce: getsoFormsData.nonce,
+                        nonce: getsoFormsAdmin.nonce,
                         form_id: formId
                     }
                 });
@@ -106,7 +106,7 @@
                     method: 'POST',
                     data: {
                         action: 'getso_forms_delete_form',
-                        nonce: getsoFormsData.nonce,
+                        nonce: getsoFormsAdmin.nonce,
                         form_id: formId
                     }
                 });
@@ -200,7 +200,7 @@
                     method: 'POST',
                     data: {
                         action: 'getso_forms_toggle_active',
-                        nonce: getsoFormsData.nonce,
+                        nonce: getsoFormsAdmin.nonce,
                         form_id: formId,
                         active: isActive ? 1 : 0
                     }

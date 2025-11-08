@@ -3,7 +3,7 @@
  * Plugin Name: Getso Forms
  * Plugin URI: https://getso.cl
  * Description: Sistema avanzado de formularios con editor CSS impulsado por IA (Claude, OpenAI, Gemini)
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Getso
  * Author URI: https://getso.cl
  * Text Domain: getso-forms
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Plugin constants
-define('GETSO_FORMS_VERSION', '1.0.0');
+define('GETSO_FORMS_VERSION', '1.1.0');
 define('GETSO_FORMS_PLUGIN_FILE', __FILE__);
 define('GETSO_FORMS_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('GETSO_FORMS_PLUGIN_URL', plugin_dir_url(__FILE__));

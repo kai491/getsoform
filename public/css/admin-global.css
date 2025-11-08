@@ -1,0 +1,718 @@
+/**
+ * Getso Forms Admin Global Styles
+ * 
+ * Estilos globales para el admin del plugin
+ * 
+ * @package Getso_Forms
+ * @since 1.0.0
+ */
+
+/* ========================================
+   Variables CSS
+   ======================================== */
+:root {
+    --getso-primary: #0073aa;
+    --getso-primary-hover: #005a87;
+    --getso-success: #46b450;
+    --getso-error: #dc3232;
+    --getso-warning: #ffb900;
+    --getso-neutral: #999;
+    --getso-border: #ddd;
+    --getso-bg-light: #f9f9f9;
+    --getso-text: #333;
+    --getso-text-light: #666;
+    --getso-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   Layout General
+   ======================================== */
+.wrap.getso-forms,
+.wrap.getso-forms-editor,
+.wrap.getso-forms-dashboard,
+.wrap.getso-forms-submissions {
+    padding: 20px;
+}
+
+.wrap h1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+/* ========================================
+   Tabs Navigation
+   ======================================== */
+.getso-tabs {
+    margin: 25px 0;
+    border-bottom: 1px solid var(--getso-border);
+}
+
+.getso-tabs .nav-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    background: transparent;
+    color: var(--getso-text-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.getso-tabs .nav-tab:hover {
+    background: var(--getso-bg-light);
+    color: var(--getso-text);
+}
+
+.getso-tabs .nav-tab-active {
+    background: #fff;
+    border-color: var(--getso-border);
+    border-bottom-color: #fff;
+    color: var(--getso-primary);
+    position: relative;
+    top: 1px;
+}
+
+.getso-tabs .nav-tab .dashicons {
+    font-size: 18px;
+}
+
+/* ========================================
+   Tab Content
+   ======================================== */
+.getso-tab-content {
+    background: #fff;
+    border: 1px solid var(--getso-border);
+    border-top: none;
+    padding: 25px;
+    min-height: 400px;
+}
+
+.getso-tab-panel {
+    display: none;
+}
+
+.getso-tab-panel.active {
+    display: block;
+}
+
+/* ========================================
+   Grid System - Editor CSS (3 columnas)
+   ======================================== */
+.getso-css-editor-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr 400px;
+    gap: 20px;
+    min-height: 600px;
+}
+
+.getso-ai-sidebar {
+    background: var(--getso-bg-light);
+    border: 1px solid var(--getso-border);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.getso-css-editor-main {
+    background: #fff;
+    border: 1px solid var(--getso-border);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.getso-css-preview {
+    background: #fff;
+    border: 1px solid var(--getso-border);
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.getso-css-preview-frame {
+    width: 100%;
+    height: 500px;
+    border: 1px solid var(--getso-border);
+    border-radius: 5px;
+    background: #fff;
+}
+
+/* ========================================
+   AI Chat Sidebar
+   ======================================== */
+.getso-ai-templates {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.getso-ai-templates label {
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--getso-text);
+    margin-bottom: 5px;
+}
+
+.ai-template {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.getso-ai-chat {
+    flex: 1;
+    background: #fff;
+    border: 1px solid var(--getso-border);
+    border-radius: 5px;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.getso-ai-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ai-message {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.ai-message.user {
+    background: #e3f2fd;
+    border-left: 3px solid var(--getso-primary);
+}
+
+.ai-message.assistant {
+    background: #f5f5f5;
+    border-left: 3px solid var(--getso-success);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 11px;
+}
+
+.message-header strong {
+    color: var(--getso-primary);
+}
+
+.message-time {
+    color: var(--getso-text-light);
+}
+
+.message-content {
+    color: var(--getso-text);
+}
+
+.getso-ai-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.getso-ai-input-wrapper textarea {
+    width: 100%;
+    border: 1px solid var(--getso-border);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 13px;
+    resize: vertical;
+}
+
+.getso-ai-status {
+    min-height: 30px;
+}
+
+.ai-status-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.ai-status-success {
+    background: #e7f5e8;
+    color: var(--getso-success);
+}
+
+.ai-status-error {
+    background: #fdecea;
+    color: var(--getso-error);
+}
+
+.ai-status-warning {
+    background: #fff8e1;
+    color: #f57c00;
+}
+
+.ai-status-loading {
+    background: #e3f2fd;
+    color: var(--getso-primary);
+}
+
+/* ========================================
+   CodeMirror Overrides
+   ======================================== */
+.CodeMirror {
+    height: 500px;
+    border: 1px solid var(--getso-border);
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+.getso-editor-toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* ========================================
+   Modales
+   ======================================== */
+.getso-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100000;
+    align-items: center;
+    justify-content: center;
+}
+
+.getso-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s ease;
+}
+
+.getso-modal-content {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease;
+}
+
+.getso-modal-large {
+    max-width: 900px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.getso-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--getso-border);
+}
+
+.getso-modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.getso-modal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--getso-text-light);
+    line-height: 1;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    transition: color 0.3s ease;
+}
+
+.getso-modal-close:hover {
+    color: var(--getso-text);
+}
+
+.getso-modal-body {
+    padding: 25px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.getso-modal-footer {
+    padding: 15px 25px;
+    border-top: 1px solid var(--getso-border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* ========================================
+   Form Editor Layout
+   ======================================== */
+.getso-editor-layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 20px;
+}
+
+.getso-form-basic-info {
+    background: #fff;
+    border: 1px solid var(--getso-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.getso-fields-section {
+    background: #fff;
+    border: 1px solid var(--getso-border);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.getso-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.getso-section-header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.getso-fields-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 200px;
+}
+
+.getso-field-item {
+    background: var(--getso-bg-light);
+    border: 1px solid var(--getso-border);
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.getso-field-item:hover {
+    box-shadow: var(--getso-shadow);
+}
+
+.field-item-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.field-drag-handle {
+    cursor: move;
+    color: var(--getso-text-light);
+}
+
+.field-type-badge {
+    background: var(--getso-primary);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.required-badge {
+    background: var(--getso-error);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+}
+
+.field-item-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.getso-no-fields {
+    text-align: center;
+    padding: 40px;
+    color: var(--getso-text-light);
+}
+
+.getso-no-fields .dashicons {
+    font-size: 48px;
+    opacity: 0.3;
+}
+
+.getso-preview-section {
+    background: #fff;
+    border: 1px solid var(--getso-border);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.getso-preview-container {
+    background: var(--getso-bg-light);
+    border: 1px solid var(--getso-border);
+    border-radius: 5px;
+    padding: 20px;
+    min-height: 400px;
+}
+
+.getso-preview-frame {
+    width: 100%;
+    min-height: 400px;
+}
+
+/* ========================================
+   Botones
+   ======================================== */
+.button-primary {
+    background: var(--getso-primary) !important;
+    border-color: var(--getso-primary) !important;
+}
+
+.button-primary:hover {
+    background: var(--getso-primary-hover) !important;
+    border-color: var(--getso-primary-hover) !important;
+}
+
+.button .dashicons {
+    margin-right: 5px;
+}
+
+.button-large {
+    height: auto;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+.has-changes {
+    position: relative;
+}
+
+.has-changes::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background: var(--getso-error);
+    border-radius: 50%;
+}
+
+.copied {
+    background: var(--getso-success) !important;
+    border-color: var(--getso-success) !important;
+    color: #fff !important;
+}
+
+/* ========================================
+   Status Badges
+   ======================================== */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.status-badge.status-success {
+    background: var(--getso-success);
+    color: #fff;
+}
+
+.status-badge.status-error {
+    background: var(--getso-error);
+    color: #fff;
+}
+
+.status-badge.status-warning {
+    background: var(--getso-warning);
+    color: #fff;
+}
+
+.status-badge.status-neutral {
+    background: var(--getso-neutral);
+    color: #fff;
+}
+
+/* ========================================
+   Notificaciones
+   ======================================== */
+.getso-notification {
+    position: fixed;
+    top: 32px;
+    right: -300px;
+    background: #fff;
+    border-left: 4px solid var(--getso-primary);
+    border-radius: 5px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 300px;
+    transition: right 0.3s ease;
+}
+
+.getso-notification.show {
+    right: 20px;
+}
+
+.getso-notification-success {
+    border-left-color: var(--getso-success);
+}
+
+.getso-notification-error {
+    border-left-color: var(--getso-error);
+}
+
+.getso-notification-warning {
+    border-left-color: var(--getso-warning);
+}
+
+.getso-notification .dashicons {
+    font-size: 20px;
+}
+
+.getso-notification-success .dashicons {
+    color: var(--getso-success);
+}
+
+.getso-notification-error .dashicons {
+    color: var(--getso-error);
+}
+
+.getso-notification-warning .dashicons {
+    color: var(--getso-warning);
+}
+
+/* ========================================
+   Shortcode Box
+   ======================================== */
+.getso-shortcode-box {
+    background: var(--getso-bg-light);
+    border: 1px solid var(--getso-border);
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.getso-shortcode-box code {
+    flex: 1;
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+}
+
+/* ========================================
+   Form Actions Footer
+   ======================================== */
+.getso-form-actions {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    border-top: 1px solid var(--getso-border);
+    padding: 20px 25px;
+    margin: 25px -25px -25px;
+    display: flex;
+    gap: 10px;
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media screen and (max-width: 1200px) {
+    .getso-css-editor-layout {
+        grid-template-columns: 250px 1fr;
+    }
+    
+    .getso-css-preview {
+        grid-column: 1 / -1;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .getso-editor-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .getso-css-editor-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    .getso-tabs .nav-tab {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .getso-modal-content {
+        width: 95%;
+    }
+}

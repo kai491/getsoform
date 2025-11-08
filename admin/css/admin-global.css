@@ -11,17 +11,46 @@
    Variables CSS
    ======================================== */
 :root {
-    --getso-primary: #0073aa;
-    --getso-primary-hover: #005a87;
-    --getso-success: #46b450;
-    --getso-error: #dc3232;
-    --getso-warning: #ffb900;
-    --getso-neutral: #999;
-    --getso-border: #ddd;
-    --getso-bg-light: #f9f9f9;
-    --getso-text: #333;
-    --getso-text-light: #666;
-    --getso-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Colores Principales - Mejorados */
+    --getso-primary: #0d2a57;
+    --getso-primary-hover: #1a4578;
+    --getso-primary-light: #e8eef5;
+    --getso-success: #10b981;
+    --getso-success-light: #d1fae5;
+    --getso-error: #ef4444;
+    --getso-error-light: #fee2e2;
+    --getso-warning: #f59e0b;
+    --getso-warning-light: #fef3c7;
+    --getso-info: #3b82f6;
+    --getso-info-light: #dbeafe;
+    --getso-neutral: #6b7280;
+
+    /* Bordes y Fondos */
+    --getso-border: #e5e7eb;
+    --getso-border-dark: #d1d5db;
+    --getso-bg-light: #f9fafb;
+    --getso-bg-lighter: #ffffff;
+
+    /* Textos */
+    --getso-text: #1f2937;
+    --getso-text-light: #6b7280;
+    --getso-text-lighter: #9ca3af;
+
+    /* Sombras - Mejoradas */
+    --getso-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --getso-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --getso-shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --getso-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --getso-shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    /* Bordes Redondeados */
+    --getso-radius-sm: 4px;
+    --getso-radius: 8px;
+    --getso-radius-md: 12px;
+    --getso-radius-lg: 16px;
+
+    /* Transiciones */
+    --getso-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ========================================
@@ -32,71 +61,109 @@
 .wrap.getso-forms-dashboard,
 .wrap.getso-forms-submissions {
     padding: 20px;
+    background: var(--getso-bg-light);
 }
 
 .wrap h1 {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 25px;
+    gap: 12px;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--getso-text);
+    letter-spacing: -0.5px;
+}
+
+.wrap h1 .dashicons {
+    background: linear-gradient(135deg, var(--getso-primary) 0%, var(--getso-primary-hover) 100%);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--getso-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--getso-shadow);
 }
 
 /* ========================================
-   Tabs Navigation
+   Tabs Navigation - Diseño Mejorado
    ======================================== */
 .getso-tabs {
-    margin: 25px 0;
-    border-bottom: 1px solid var(--getso-border);
+    margin: 30px 0 0;
+    border-bottom: 2px solid var(--getso-border);
+    background: transparent;
 }
 
 .getso-tabs .nav-tab {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 20px;
-    border: 1px solid transparent;
-    border-bottom: none;
+    padding: 14px 24px;
+    border: none;
+    border-bottom: 3px solid transparent;
     background: transparent;
     color: var(--getso-text-light);
     text-decoration: none;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 14px;
+    transition: var(--getso-transition);
+    position: relative;
+    margin-bottom: -2px;
 }
 
 .getso-tabs .nav-tab:hover {
     background: var(--getso-bg-light);
     color: var(--getso-text);
+    border-bottom-color: var(--getso-border-dark);
 }
 
 .getso-tabs .nav-tab-active {
-    background: #fff;
-    border-color: var(--getso-border);
-    border-bottom-color: #fff;
+    background: transparent;
     color: var(--getso-primary);
-    position: relative;
-    top: 1px;
+    border-bottom-color: var(--getso-primary);
 }
 
 .getso-tabs .nav-tab .dashicons {
     font-size: 18px;
+    transition: var(--getso-transition);
+}
+
+.getso-tabs .nav-tab-active .dashicons {
+    transform: scale(1.1);
 }
 
 /* ========================================
    Tab Content
    ======================================== */
 .getso-tab-content {
-    background: #fff;
-    border: 1px solid var(--getso-border);
-    border-top: none;
-    padding: 25px;
+    background: var(--getso-bg-lighter);
+    border: none;
+    border-radius: 0 0 var(--getso-radius) var(--getso-radius);
+    padding: 30px;
     min-height: 400px;
+    box-shadow: var(--getso-shadow-sm);
 }
 
 .getso-tab-panel {
     display: none;
+    animation: fadeInUp 0.3s ease;
 }
 
 .getso-tab-panel.active {
     display: block;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ========================================

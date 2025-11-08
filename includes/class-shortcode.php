@@ -83,15 +83,18 @@ class Getso_Forms_Shortcode {
                     
                     <div class="getso-form-buttons">
                         <button type="submit" class="getso-btn getso-btn-primary" data-action="submit">
-                            <?php 
-                            // CORRECCIÓN: El texto del botón se guarda en 'submit_button_text', no en 'messages.submit_button'
-                            echo esc_html($form->form_settings['submit_button_text'] ?? 'Enviar'); 
+                            <?php
+                            // CORRECCI脫N: El texto del bot贸n se guarda en 'messages.submit_button'
+                            $submit_text = $form->form_settings['messages']['submit_button'] ??
+                                          $form->form_settings['submit_button_text'] ??
+                                          'Enviar';
+                            echo esc_html($submit_text);
                             ?>
                         </button>
                         
                         <?php if (isset($form->form_settings['whatsapp']) && $form->form_settings['whatsapp']['enabled']) : ?>
                         <button type="button" class="getso-btn getso-btn-whatsapp" data-action="whatsapp">
-                            💬 WhatsApp
+                            &#128222; WhatsApp
                         </button>
                         <?php endif; ?>
                     </div>
@@ -107,7 +110,7 @@ class Getso_Forms_Shortcode {
             const formId = <?php echo intval($form->id); ?>;
             const formSettings = <?php echo wp_json_encode($form->form_settings); ?>;
             
-            // Lógica de envío se maneja en form-handler.js
+            // L贸gica de env铆o se maneja en form-handler.js
         })();
         </script>
         

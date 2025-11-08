@@ -946,4 +946,66 @@ class Getso_Forms_Manager {
 
         wp_send_json_success(['html' => $html]);
     }
+
+    /**
+     * AJAX: Toggle activo/inactivo
+     */
+    public function ajax_toggle_active() {
+        check_ajax_referer('getso_forms_nonce', 'nonce');
+
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error(array('message' => __('No tienes permisos', 'getso-forms')));
+            return;
+        }
+
+        $form_id = isset($_POST['form_id']) ? intval($_POST['form_id']) : 0;
+        $active = isset($_POST['active']) ? intval($_POST['active']) : 0;
+
+        $result = self::update_form($form_id, array('active' => $active));
+
+        if (is_wp_error($result)) {
+            wp_send_json_error(array('message' => $result->get_error_message()));
+        } else {
+            wp_send_json_success(array(
+                'message' => __('Estado actualizado', 'getso-forms'),
+                'active' => $active
+            ));
+        }
+    }
+
+    /**
+     * AJAX: Bulk delete submissions
+     */
+    public function ajax_bulk_delete_submissions() {
+        check_ajax_referer('getso_forms_nonce', 'nonce');
+
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error(array('message' => __('No tienes permisos', 'getso-forms')));
+            return;
+        }
+
+        $ids = isset($_POST['ids']) ? array_map('intval', $_POST['ids']) : array();
+
+        if (empty($ids)) {
+            wp_send_json_error(array('message' => __('No se seleccionaron envíos', 'getso-forms')));
+            return;
+        }
+
+        global $wpdb;
+        $table = Getso_Forms_Database::get_table_name('submissions');
+
+        $placeholders = implode(',', array_fill(0, count($ids), '%d'));
+        $query = "DELETE FROM $table WHERE id IN ($placeholders)";
+
+        $result = $wpdb->query($wpdb->prepare($query, $ids));
+
+        if ($result === false) {
+            wp_send_json_error(array('message' => __('Error al eliminar envíos', 'getso-forms')));
+        } else {
+            wp_send_json_success(array(
+                'message' => sprintf(__('%d envíos eliminados', 'getso-forms'), $result),
+                'deleted' => $result
+            ));
+        }
+    }
 }

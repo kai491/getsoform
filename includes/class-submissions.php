@@ -101,13 +101,24 @@ class Getso_Forms_Submissions {
         }
         
         $form_id = isset($_POST['form_id']) ? intval($_POST['form_id']) : 0;
-        $form_data = isset($_POST['form_data']) ? $_POST['form_data'] : array();
-        
+        $form_data_raw = isset($_POST['form_data']) ? $_POST['form_data'] : array();
+
+        // CORRECCIÓN: form-handler.js envía JSON.stringify(data), debemos parsearlo
+        if (is_string($form_data_raw)) {
+            $form_data = json_decode(stripslashes($form_data_raw), true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                wp_send_json_error(array('message' => 'Error al decodificar datos JSON'));
+                return;
+            }
+        } else {
+            $form_data = $form_data_raw;
+        }
+
         if (!$form_id || empty($form_data)) {
             wp_send_json_error(array('message' => 'Datos incompletos'));
             return;
         }
-        
+
         // Sanitizar datos
         $sanitized_data = array();
         foreach ($form_data as $key => $value) {
